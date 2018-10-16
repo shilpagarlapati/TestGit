@@ -1,2 +1,2 @@
 # TestGit
-first change
+POC for web and api automation
