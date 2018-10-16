@@ -1,0 +1,7 @@
+19:14:03.590 [main] INFO  Base.base - 202
+19:21:14.157 [main] INFO  Base.base - driver is initialized
+19:21:17.683 [main] INFO  Base.base - navigated to home page
+19:21:19.714 [main] INFO  Base.base - Validating search results
+19:21:21.148 [main] INFO  Base.base - 4 results are found
+19:21:24.188 [main] INFO  Base.base - response code is 200
+19:21:26.463 [main] INFO  Base.base - {"version":"10.2.2.48","locations":[{"id":"10101102","name":"Wynyard Station, Sydney","disassembledName":"Wynyard Station","coord":[3755258.0,4889121.0],"type":"stop","matchQuality":929,"isBest":true,"modes":[1,5,11],"parent":{"id":"95301001|1","name":"Sydney","type":"locality"},"assignedStops":[{"id":"10101102","name":"Wynyard Station","type":"stop","coord":[3755258.0,4889121.0],"parent":{"name":"Sydney","type":"locality"},"modes":[1,5,11],"connectingMode":100}]}]}
