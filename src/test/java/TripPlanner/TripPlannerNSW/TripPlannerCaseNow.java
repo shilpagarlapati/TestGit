@@ -13,6 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -43,11 +44,12 @@ class TripPlannerCaseNow extends base {
 		TP.getTofield().sendKeys(To);
 		TP.getLeavinglink().click();
 		if (Time.equalsIgnoreCase("Leaving Now")){
-			log.info("Reached Leaving Now Testcase");
+			log.info("Executing Leaving Now Testcase");
 						
 		}
 		else if(Time.equalsIgnoreCase("Leaving After")){
-			log.info("Reached Arriving After Testcase");
+			
+			log.info("Executing Leaving After Testcase");
 			String ST=fl.TimeWithoutDate(); 
 			String date[]=ST.split(":");
 			
@@ -59,12 +61,14 @@ class TripPlannerCaseNow extends base {
 		}
 	  else if(Time.equalsIgnoreCase("Arriving Before")){		
 		 
-		 	log.info("Reached Arriving before Testcase");
+		 	log.info("Executing Arriving before Testcase");
+		 	
 			String ST=fl.TimeWithoutDate(); 
+			
 			String date[]=ST.split(":");			
 			
 			wait.until(ExpectedConditions.visibilityOf(TP.getLeavinglink())).click();
-			//TP.getArrivingTab().click();
+			//Clicking on Arriving link
 			wait.until(ExpectedConditions.visibilityOf(TP.getArrivingTab())).click();
 			Select S= new Select(TP.selectDay());
 			S.selectByIndex(1);
@@ -74,16 +78,19 @@ class TripPlannerCaseNow extends base {
 		}
 		
 		TP.getGo().click();
-		wait.until(ExpectedConditions.visibilityOfAllElements(TP.resultDisplay()));
-		log.info("Validating search results");
-	    
+		//wait until earlier button is displayed
+		wait.until(ExpectedConditions.visibilityOf(TP.getearlierBtn()));
+		
+		log.info("Validating search results of test case"+Time);
+	  //  System.out.println(TP.resultDisplay().size()); 
 		if (TP.resultDisplay().size()>0){
 			int noofresults=TP.resultDisplay().size();
 			log.info(noofresults +" results are found");
+			Assert.assertTrue(true, "Results are fetched");
 		}
 		else {
 		log.info("no search results found please refine your search");
-			
+		Assert.assertTrue(false, "Results are not fetched");
 		}
 		driver.close();
 	
